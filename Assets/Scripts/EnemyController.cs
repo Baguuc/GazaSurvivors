@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -13,13 +11,19 @@ public class EnemyController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.LookAt(player.transform);
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
-    private void FixedUpdate()
+
+    public void OnTriggerEnter(Collider other)
     {
-        
+        // jezeli trigger ma tag "Bullet" (czyli jest kulka), zniszcz przeciwnika i kulke
+        if(other.gameObject.tag == "Bullet")
+        {
+            Destroy(this.gameObject);
+        }
     }
+
 }
