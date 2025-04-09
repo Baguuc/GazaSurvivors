@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public GameObject gun;
     public GameObject bulletSpawn;
     public GameObject bulletPrefab;
+    public GameObject swordHandle;
+
     void Start()
     {
         //pobieramy odniesienie do komponentu Rigidbody
@@ -39,6 +41,15 @@ public class PlayerController : MonoBehaviour
         //sk³adnia LINQ - to co jest w nawiasie po orderby czytamy jako
         //dla ka¿dego wroga w liœcie enemies oblicz odleg³oœæ od gracza i posortuj listê wed³ug tej odleg³oœci
         enemies = enemies.OrderBy(enemy => Vector3.Distance(enemy.transform.position, transform.position)).ToList();
+
+        if (enemies.Count > 0 && Vector3.Distance(enemies[0].transform.position, transform.position) < 1.5f)
+        {
+            swordHandle.SetActive(true);
+            swordHandle.transform.Rotate(0, 2f, 0);
+        } else
+        {
+            swordHandle.SetActive(false);
+        }
     }
     void FixedUpdate()
     {

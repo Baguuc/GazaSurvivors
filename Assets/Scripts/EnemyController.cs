@@ -20,9 +20,23 @@ public class EnemyController : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         // jezeli trigger ma tag "Bullet" (czyli jest kulka), zniszcz przeciwnika i kulke
-        if(other.gameObject.tag == "Bullet")
+        if(other.gameObject.tag == "PlayerWeapon")
         {
-            Destroy(this.gameObject);
+            WeaponController weaponController = other.GetComponent<WeaponController>();
+
+            if(weaponController == null)
+            {
+                return;
+            }
+            
+            Collider selfCollider = this.GetComponent<Collider>();
+
+            if (selfCollider == null)
+            {
+                return;
+            }
+
+            weaponController.Dispose(selfCollider);
         }
     }
 
