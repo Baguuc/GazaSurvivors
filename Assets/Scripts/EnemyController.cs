@@ -37,6 +37,7 @@ public class EnemyController : MonoBehaviour
             }
 
             weaponController.Dispose(selfCollider);
+            GameObject.FindWithTag("LevelManager").GetComponent<LevelManger>().AddPoints(1);
         }
     }
 
