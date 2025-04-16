@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletSpawn;
     public GameObject bulletPrefab;
     public GameObject swordHandle;
+    public GameObject levelManager;
 
     void Start()
     {
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
             swordHandle.SetActive(false);
         }
     }
+
     void FixedUpdate()
     {
         //wyliczamy docelow¹ pozycjê gracza _po_ ruchu
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
         //przesuwamy gracza przy u¿yciu MovePosition
         rb.MovePosition(targetPosition);
     }
+
     void Shoot()
     {
         //sprawdz czy mamy jakiœ wrogów na liœcie
@@ -76,6 +79,14 @@ public class PlayerController : MonoBehaviour
             //skasuj najbli¿szego wroga
             //Destroy(enemies[0]); //czy to jest bezpieczne? zostanie refencja do obiektu w enemies?
             Debug.Log("Pif paf!");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Enemy")
+        {
+            levelManager.GetComponent<LevelManger>().ReducePlayerHeath(5);
         }
     }
 }
