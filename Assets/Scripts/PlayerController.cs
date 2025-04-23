@@ -6,79 +6,57 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Vector2 controllerInput;
+    public List<WeaponController> weapons;
     public float speed = 5f;
-    //odniesienie do komponentu Rigidbody gracza
-    Rigidbody rb;
-    // Start is called before the first frame update
-    public List<GameObject> enemies;
-    public GameObject gun;
-    public GameObject bulletSpawn;
-    public GameObject bulletPrefab;
-    public GameObject swordHandle;
     public GameObject levelManager;
+
+    Vector2 controllerInput;
+    Rigidbody rb;
+    private List<GameObject> enemies;
 
     void Start()
     {
-        //pobieramy odniesienie do komponentu Rigidbody
         rb = GetComponent<Rigidbody>();
         enemies = new List<GameObject>();
-        InvokeRepeating("Shoot", 0, 2);
+        
+        RegisterAttacks();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //pobieramy wychylenie wirtualne joysticka w osi x (lewo/prawo) i y (góra/dó³)
         controllerInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        //tworzymy wektor ruchu na podstawie wychylenia joysticka - zamieniamy y joysticka na z œwiata
-        //Vector3 movementVector = new Vector3(controllerInput.x, 0, controllerInput.y);
-        //przesuwamy obiekt gracza o wektor ruchu
-        //transform.Translate(movementVector * Time.deltaTime * speed);
-
-        //wyci¹gamy sobie ze sceny wszystkie obiekty z tagiem Enemy i pakujemy na listê
-        enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
-        //sortujemy listê wrogów wed³ug odleg³oœci od gracza i zpaisujemy ponownie jako liste
-        //sk³adnia LINQ - to co jest w nawiasie po orderby czytamy jako
-        //dla ka¿dego wroga w liœcie enemies oblicz odleg³oœæ od gracza i posortuj listê wed³ug tej odleg³oœci
-        enemies = enemies.OrderBy(enemy => Vector3.Distance(enemy.transform.position, transform.position)).ToList();
-
-        if (enemies.Count > 0 && Vector3.Distance(enemies[0].transform.position, transform.position) < 1.5f)
-        {
-            swordHandle.SetActive(true);
-            swordHandle.transform.Rotate(0, 2f, 0);
-        } else
-        {
-            swordHandle.SetActive(false);
-        }
     }
 
     void FixedUpdate()
     {
-        //wyliczamy docelow¹ pozycjê gracza _po_ ruchu
-        //najpierw liczymy wektor przesuniêcia
         Vector3 movementVector = new Vector3(controllerInput.x, 0, controllerInput.y);
-        //mno¿ymy go przez czas od ostatniej klatki fizyki i predkosc ruchu
-        //dodajemy go do obecnego po³o¿enia gracza tworz¹c pozycjê docelow¹
         Vector3 targetPosition = transform.position + movementVector * Time.fixedDeltaTime * speed;
-        //przesuwamy gracza przy u¿yciu MovePosition
         rb.MovePosition(targetPosition);
     }
-
-    void Shoot()
+    
+    void RegisterAttacks()
     {
-        //sprawdz czy mamy jakiœ wrogów na liœcie
-        if(enemies.Count > 0)
+        foreach (WeaponController weapon in this.weapons)
         {
-            //obróæ "pistolet" w kierunku najbli¿szego wroga
-            gun.transform.LookAt(enemies[0].transform);
-            //stwórz pocisk na wspó³rzêdnych bulletSpawn z rotacj¹ "pistoletu" i zapisz referencje do niego do bullet
-            GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, gun.transform.rotation);
-            //rozpêdŸ pocisk w przód
-            bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 1000);
-            //skasuj najbli¿szego wroga
-            //Destroy(enemies[0]); //czy to jest bezpieczne? zostanie refencja do obiektu w enemies?
-            Debug.Log("Pif paf!");
+            Action callback = () =>
+            {
+                enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+                enemies = enemies.OrderBy(enemy => Vector3.Distance(enemy.transform.position, transform.position)).ToList();
+
+                weapon.Attack(enemies);
+            };
+
+            StartCoroutine(CreateCoroutine(callback, weapon.GetDelay()));
+        }
+    }
+
+    private IEnumerator CreateCoroutine(Action f, float interval)
+    {
+        while(true)
+        {
+            f();
+
+            yield return new WaitForSeconds(interval);
         }
     }
 

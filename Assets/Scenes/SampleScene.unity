@@ -395,7 +395,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 75226114}
-  - component: {fileID: 75226115}
   m_Layer: 0
   m_Name: StarPivot
   m_TagString: Untagged
@@ -419,19 +418,6 @@ Transform:
   - {fileID: 1325879688}
   m_Father: {fileID: 631146974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &75226115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75226113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a45bbc2a4124de4c99efabf2555dc0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 500
 --- !u!1 &124662126
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,12 +728,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a0a5657718b614da3a74a22fb09d0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 1046526295}
+  - {fileID: 1112743853}
+  - {fileID: 1325879691}
   speed: 5
-  enemies: []
-  gun: {fileID: 1046526293}
-  bulletSpawn: {fileID: 1951470506}
-  bulletPrefab: {fileID: 8278216679330247522, guid: 7b0c19ef053204f4e8ae1b01aa04789b, type: 3}
-  swordHandle: {fileID: 1062197288}
   levelManager: {fileID: 189877157}
 --- !u!136 &631146976
 CapsuleCollider:
@@ -1313,6 +1298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1046526294}
+  - component: {fileID: 1046526295}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -1336,6 +1322,21 @@ Transform:
   - {fileID: 1951470507}
   m_Father: {fileID: 631146974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1046526295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046526293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92415bdb32965842a8f942d5f8a2fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 1046526293}
+  bulletSpawn: {fileID: 1951470506}
+  bulletPrefab: {fileID: 8278216679330247522, guid: 7b0c19ef053204f4e8ae1b01aa04789b, type: 3}
 --- !u!1 &1051387804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,14 +1397,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062197288}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1112743852}
   m_Father: {fileID: 631146974}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1112743851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,6 +1451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a78123d78f755b4c9d8b55b25af9488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordHandle: {fileID: 1062197288}
 --- !u!136 &1112743854
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1550,8 +1552,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1325879688}
-  - component: {fileID: 1325879689}
   - component: {fileID: 1325879690}
+  - component: {fileID: 1325879691}
   m_Layer: 0
   m_Name: Star
   m_TagString: PlayerWeapon
@@ -1575,18 +1577,6 @@ Transform:
   - {fileID: 1967959361}
   m_Father: {fileID: 75226114}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1325879689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325879687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d53f34354181a84c9d58ae0d021dd5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &1325879690
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1608,6 +1598,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1325879691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325879687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d53f34354181a84c9d58ae0d021dd5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 250
+  pivot: {fileID: 75226113}
 --- !u!1 &1430744731
 GameObject:
   m_ObjectHideFlags: 0

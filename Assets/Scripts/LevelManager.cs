@@ -16,7 +16,7 @@ public class LevelManger : MonoBehaviour
     void Start()
     {
         points = 0;
-        playerHealth = 10;
+        playerHealth = 10000;
     }
 
     void Update()
