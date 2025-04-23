@@ -2,24 +2,13 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    GameObject player;
     public float speed = 4f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
+    public float health = 20f;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        transform.LookAt(player.transform);
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
-    }
+    GameObject player;
 
     public void OnTriggerEnter(Collider other)
     {
-        // jezeli trigger ma tag "Bullet" (czyli jest kulka), zniszcz przeciwnika i kulke
         if(other.gameObject.tag == "PlayerWeapon")
         {
             WeaponController weaponController = other.GetComponent<WeaponController>();
@@ -37,8 +26,28 @@ public class EnemyController : MonoBehaviour
             }
 
             weaponController.Dispose(selfCollider);
+        }
+    }
+
+    public void Damage(float damageAmount)
+    {
+        this.health -= damageAmount;
+
+        if(this.health <= 0)
+        {
+            Destroy(this.gameObject);
             GameObject.FindWithTag("LevelManager").GetComponent<LevelManger>().AddPoints(1);
         }
     }
 
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void FixedUpdate()
+    {
+        transform.LookAt(player.transform);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+    }
 }

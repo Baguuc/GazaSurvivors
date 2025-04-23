@@ -13,18 +13,6 @@ public class LevelManger : MonoBehaviour
     int points;
     int playerHealth;
 
-    void Start()
-    {
-        points = 0;
-        playerHealth = 10000;
-    }
-
-    void Update()
-    {
-        scoreText.text = $"Wynik: {points}";
-        playerHealthText.text = $"Zdrowie: {playerHealth}";
-    }
-
     public void AddPoints(int n)
     {
         points += n;
@@ -33,7 +21,7 @@ public class LevelManger : MonoBehaviour
     public void ReducePlayerHeath(int n)
     {
         playerHealth -= n;
-        
+
         if (playerHealth <= 0)
         {
             Time.timeScale = 0;
@@ -45,5 +33,17 @@ public class LevelManger : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void Start()
+    {
+        points = 0;
+        playerHealth = 10000;
+    }
+
+    private void Update()
+    {
+        scoreText.text = $"Wynik: {points}";
+        playerHealthText.text = $"Zdrowie: {playerHealth}";
     }
 }

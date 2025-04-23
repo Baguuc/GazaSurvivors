@@ -6,15 +6,21 @@ public class StarController : WeaponController
 {
     public float rotationSpeed = 250f;
     public GameObject pivot;
+    public float damage = 20f;
 
     public override void Dispose(Collider enemy)
     {
-        Destroy(enemy.gameObject);
+        EnemyController enemyController = enemy.GetComponent<EnemyController>();
+        if (enemyController == null)
+        {
+            return;
+        }
+
+        enemyController.Damage(this.damage);
     }
 
     public override void Attack(List<GameObject> enemies)
     {
-        Debug.Log("Star attack!");
         pivot.transform.Rotate(Vector3.up * Time.deltaTime * this.rotationSpeed);
     }
 

@@ -5,15 +5,21 @@ using UnityEngine;
 public class SwordController : WeaponController
 {
     public GameObject swordHandle;
+    public float damage = 10f;
 
     public override void Dispose(Collider enemy)
     {
-        Destroy(enemy.gameObject);
+        EnemyController enemyController = enemy.GetComponent<EnemyController>();
+        if (enemyController == null)
+        {
+            return;
+        }
+
+        enemyController.Damage(this.damage);
     }
 
     public override void Attack(List<GameObject> enemies)
     {
-        Debug.Log("Sword attack!");
         if (enemies.Count > 0 && Vector3.Distance(enemies[0].transform.position, transform.position) < 1.5f)
         {
             swordHandle.SetActive(true);

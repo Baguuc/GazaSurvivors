@@ -1337,6 +1337,7 @@ MonoBehaviour:
   gun: {fileID: 1046526293}
   bulletSpawn: {fileID: 1951470506}
   bulletPrefab: {fileID: 8278216679330247522, guid: 7b0c19ef053204f4e8ae1b01aa04789b, type: 3}
+  damage: 5
 --- !u!1 &1051387804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,6 +1453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordHandle: {fileID: 1062197288}
+  damage: 5
 --- !u!136 &1112743854
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1612,6 +1614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 250
   pivot: {fileID: 75226113}
+  damage: 5
 --- !u!1 &1430744731
 GameObject:
   m_ObjectHideFlags: 0

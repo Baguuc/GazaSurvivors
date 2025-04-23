@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     private List<GameObject> enemies;
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         enemies = new List<GameObject>();
@@ -22,19 +22,19 @@ public class PlayerController : MonoBehaviour
         RegisterAttacks();
     }
 
-    void Update()
+    private void Update()
     {
         controllerInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Vector3 movementVector = new Vector3(controllerInput.x, 0, controllerInput.y);
         Vector3 targetPosition = transform.position + movementVector * Time.fixedDeltaTime * speed;
         rb.MovePosition(targetPosition);
     }
-    
-    void RegisterAttacks()
+
+    private void RegisterAttacks()
     {
         foreach (WeaponController weapon in this.weapons)
         {

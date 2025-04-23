@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  health: 20
 --- !u!136 &8296347662958524789
 CapsuleCollider:
   m_ObjectHideFlags: 0
