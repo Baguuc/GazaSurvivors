@@ -1,9 +1,12 @@
+using TMPro;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     public float speed = 4f;
     public float health = 20f;
+    public TextMeshProUGUI hpDisplay;
+    public Canvas canvas;
 
     GameObject player;
 
@@ -31,6 +34,7 @@ public class EnemyController : MonoBehaviour
 
     public void Damage(float damageAmount)
     {
+        Debug.Log(damageAmount);
         this.health -= damageAmount;
 
         if(this.health <= 0)
@@ -49,5 +53,11 @@ public class EnemyController : MonoBehaviour
     {
         transform.LookAt(player.transform);
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
+    }
+
+    private void Update()
+    {
+        this.hpDisplay.text = $"{this.health} HP";
+        this.canvas.transform.LookAt(new Vector3(this.canvas.transform.position.x, this.canvas.transform.position.y, 55));
     }
 }

@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordHandle: {fileID: 1062197288}
-  damage: 5
+  damage: 10
 --- !u!136 &1112743854
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1614,7 +1614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 250
   pivot: {fileID: 75226113}
-  damage: 5
+  damage: 20
 --- !u!1 &1430744731
 GameObject:
   m_ObjectHideFlags: 0
