@@ -43,7 +43,7 @@ public class LevelManger : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = $"Wynik: {points}";
-        playerHealthText.text = $"Zdrowie: {playerHealth}";
+        scoreText.text = $"{points}";
+        playerHealthText.text = $"{playerHealth}";
     }
 }
