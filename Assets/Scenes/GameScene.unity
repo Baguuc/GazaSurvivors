@@ -653,8 +653,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 7.6000366, y: -429}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 7.6000366, y: -469.00003}
+  m_SizeDelta: {x: 75, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &407127115
 MonoBehaviour:
@@ -703,8 +703,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1341,8 +1341,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -326, y: -429}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -436.9, y: -469.00003}
+  m_SizeDelta: {x: 50, y: 25}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &984714766
 MonoBehaviour:
@@ -1391,8 +1391,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1477,8 +1477,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 11, y: -484}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchoredPosition: {x: 9.900024, y: -498.2}
+  m_SizeDelta: {x: 75, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &988351624
 MonoBehaviour:
@@ -1527,8 +1527,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2513,8 +2513,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 126, y: 3}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchoredPosition: {x: 89.10004, y: 13.699982}
+  m_SizeDelta: {x: 50, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1955574765
 MonoBehaviour:
@@ -2563,8 +2563,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
