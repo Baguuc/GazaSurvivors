@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
         
     public void NewGame()
     {
-        SceneManager.LoadScene("CharacterSelection");
+        SceneManager.LoadScene("CharacterSelectionScene");
     }
 
     public void ExitGame()
