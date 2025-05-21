@@ -1,12 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum PlayerSide
+{
+    Israel,
+    Palestine
+}
+
 public class GameManager : MonoBehaviour
 {
-    public void Start()
+    public static GameManager Instance;
+
+    public PlayerSide playerSide;
+
+    public void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+            return;
+        }
+        else if (Instance == null)
+            Instance = this;
+
         DontDestroyOnLoad(gameObject);
     }
         
@@ -18,5 +37,11 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void StartAs(PlayerSide asSide)
+    {
+        this.playerSide = asSide;
+        SceneManager.LoadScene("GameScene");
     }
 }
