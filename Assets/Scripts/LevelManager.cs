@@ -35,7 +35,7 @@ public class LevelManger : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private void Start()
+    private void Awake()
     {
         points = 0;
         playerHealth = 10000;
